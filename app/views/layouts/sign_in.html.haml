@@ -1,0 +1,26 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title GCECT Boys' Hostel
+    -# %link{:href => "favicon.ico", :rel => "shortcut icon", :type => "image/x-icon"}/
+    = favicon_link_tag 'favicon.ico' 
+    %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag "application", "data-turbo-track": "reload"
+    = javascript_importmap_tags
+    = stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload"
+  %body
+    %div 
+      %p.p-3.text-sm{class: "bg-[#bb8d38] text-[#a0325b]"}
+        email | gcecthostellibrary@gmail.com
+    .h-36.flex.items-start.p-3
+      = image_tag("apple-touch-icon.png", :alt => "logo" ,size: "120x120")
+      .text-2xl.pt-3.text-blue-800
+        Government College of Engineering & Ceramic Technology 
+        %br Boys' Hostel
+    %div 
+      %p.p-3.text-sm{class: "bg-[#bb8d38] text-white"}
+        nab_bar    
+    = yield

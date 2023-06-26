@@ -1,0 +1,18 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %title GCECT Boys' Hostel
+    %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}
+    = csrf_meta_tags
+    = csp_meta_tag
+    %link{:href => "https://use.fontawesome.com/releases/v5.3.1/css/all.css", :rel => "stylesheet"}
+    = stylesheet_link_tag 'tailwind', media: 'all', 'data-turbo-track': 'reload'
+    = stylesheet_link_tag "application", "data-turbo-track": "reload"
+    = javascript_importmap_tags
+
+  %body.bg-gray-200.font-sans.mt-12.overflow-hidden
+    .min-h-full.flex.items-center.justify-center.py-12.px-4.lg:px-8.sm:px-6
+      .max-w-md.w-96.space-y-8.mt-12
+        = yield
+    = render 'layouts/flash_notifications'
