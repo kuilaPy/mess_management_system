@@ -1,0 +1,2 @@
+class BalanceLogsController < ApplicationController
+end
