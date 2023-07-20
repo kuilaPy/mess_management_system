@@ -11,7 +11,28 @@
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
     = stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload"
-  %body
+    = javascript_include_tag "application" 
+
+  -# %body{class: "bg-[#f0f2f5]"}
+  -#   = render(partial: 'layouts/top_nav_bar')
+  -#   %div
+  -#     = render(partial: 'layouts/side_nav_bar')
+  -#     = yield
+    -# = link_to 'Logout', destroy_student_session_path, method: :delete, data: { turbo: 'false' }
     
 
-    = yield
+  %body.font-sans.leading-normal.tracking-normal.w-full
+    %header
+      = render(partial: 'layouts/top_nav_bar')
+    %main
+      .flex.flex-col.md:flex-row.overflow-y-hidden
+        = render 'layouts/side_nav_bar'
+        %section.w-full
+          #main.main-content.flex-auto.md:px-6.md:py-3.w-full.bg-slate-50.h-screen.overflow-y-auto
+            .flex.items-center.justify-between.mb-2
+              -# .breadcrumbs
+              -#   = breadcrumbs.render(format: :inline, separator: "•")
+            = yield
+    #flash.flash
+      = render 'layouts/flash_notifications'
+    %footer

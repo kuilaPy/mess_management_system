@@ -1,6 +1,9 @@
-body{
-    background-color: rgb(229, 231, 235);
-    padding: 0;
+body #login{
+    /* background-color: rgb(229, 231, 235); */
+    /* padding: 0; */
+    /* background-image: url(hostel_img.jpeg); */
+    /* border: 1px solid grey; */
+    /* background-size: cover; */
 }
 .flex-container {
     display: flex;
@@ -69,7 +72,7 @@ input[type=submit] {
   border-radius: 4px;
   color: white;
   cursor: pointer;
-  background-color: #F48020;
+  background-color: #3551f1;
   border-color: #F48020;
   font-family: Poppins,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
 }

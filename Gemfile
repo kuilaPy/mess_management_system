@@ -73,5 +73,5 @@ end
 gem "haml-rails", "~> 2.0"
 gem 'html2haml'
 gem 'devise'
-
 gem "tailwindcss-rails", "~> 2.0"
+gem 'active_link_to'

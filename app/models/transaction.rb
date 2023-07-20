@@ -6,6 +6,6 @@ class Transaction < ApplicationRecord
   has_one :marketing
  
 
-  TXN_TYPE = {1=> "Mess Wallet Credit +C.M.W", 2=> "Per Head Payment +C.M.W", 3=> "Per Head Return -D.M.W", 4=> "Daily Marketing Payment -D.M.W" , 5=> "Daily Marketing Return +C.M.W", 6=> "Miscellaneous Payment -D.M.W" 7=> "Miscellaneous Return +C.M.W", 8=> "Guest Meal Payment +C.M.W", 9=> "Fund Wallet Credit +C.F.W", 10=> "Fund wallet Debit -D.F.W"}
+  TXN_TYPE = {1=> "Mess Wallet Credit +C.M.W", 2=> "Per Head Payment +C.M.W", 3=> "Per Head Return -D.M.W", 4=> "Daily Marketing Payment -D.M.W" , 5=> "Daily Marketing Return +C.M.W", 6=> "Miscellaneous Payment -D.M.W" ,7=> "Miscellaneous Return +C.M.W", 8=> "Guest Meal Payment +C.M.W", 9=> "Fund Wallet Credit +C.F.W", 10=> "Fund wallet Debit -D.F.W"}
   WALLET_TYPE = {1=> "Mess Wallet", 2=> "Fund Wallet"}
 end
