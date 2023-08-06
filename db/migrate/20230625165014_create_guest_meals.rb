@@ -6,8 +6,6 @@ class CreateGuestMeals < ActiveRecord::Migration[7.0]
       t.string :status
       t.belongs_to :mess_manager, foreign_key: true
       t.date :date
-      
-
       t.timestamps
     end
   end
