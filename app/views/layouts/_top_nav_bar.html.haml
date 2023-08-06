@@ -1,0 +1,8 @@
+%nav
+  .flex.items-start.p-3.rounded-b-lg.drop-shadow-md{class: "bg-[#ffffff]"}
+    = image_tag("apple-touch-icon.png", :alt => "logo" ,size: "80x80")
+    .text-2xl.pt-2.text-blue-800
+      Government College of Engineering & Ceramic Technology 
+      %br Boys' Hostel
+    %div
+      = link_to "Sign Out", destroy_student_session_path, data: { "turbo-method": :delete }

@@ -1,0 +1,38 @@
+= form_for @transaction do |f|
+  - if @transaction.errors.any?
+    .p-4.mb-4.text-sm.text-blue-800.rounded-lg.bg-blue-50.dark:bg-gray-800.dark:text-blue-400{:role => "alert"}
+      %h6= "#{pluralize(@transaction.errors.count, "error")} prohibited this page from being saved:"
+      %ul
+        - @transaction.errors.full_messages.each do |message|
+          %li= message
+  %div         
+    = f.label :date,  class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+    = f.date_field :date
+  %div 
+    = f.label :student_id, "Assign to",class: "dark:text-white "
+    = f.select :student_id, options_for_select(Student.all.map{|s| [ s.name, s.id ]}, @transaction.student_id)
+    
+  %div 
+    = f.label :amount ,class: "dark:text-white "
+    = f.text_field :amount
+  %div 
+    = f.label :comment, "Reason" ,class: "dark:text-white "
+    = f.text_field :comment
+  %div 
+    = f.label :txn_type,class: "dark:text-white "
+    = f.select :txn_type, options_for_select(Transaction::TXN_TYPE.collect { |t| [t[1], t[0]] }, @transaction.txn_type)
+  %div 
+    = f.label :wallet_type,class: "dark:text-white "
+    = f.select :wallet_type, options_for_select(Transaction::WALLET_TYPE.collect { |w| [w[1], w[0]] }, @transaction.wallet_type)
+  -if current_student.fund_manager.present?
+    %div 
+      = f.label :fund_manager_id ,"Manager",class: "dark:text-white "
+      = f.select :fund_manager_id, options_for_select(FundManager.all.map{|f| [ f.student.name, f.id ]}, @transaction.fund_manager_id)
+  - else
+    %div 
+      = f.label :mess_manager_id ,"Manager",class: "dark:text-white "
+      = f.select :mess_manager_id, options_for_select(MessManager.all.map{|m| [ m.student.name, m.id ]}, @transaction.mess_manager_id)
+
+  %div 
+    =f.submit "Save", class: "btn green waves-effect waves-light"
+  

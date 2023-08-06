@@ -1,4 +1,4 @@
-!!!
+
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
@@ -11,8 +11,11 @@
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
 
-  %body.bg-gray-200.font-sans.mt-12.overflow-hidden
+  %body#login.bg-gray-200.font-sans.mt-12.overflow-hidden
+    -# %h1.text-white.text-xl
+      Well come to .. govt college og enginnering and ceramin technologhy
     .min-h-full.flex.items-center.justify-center.py-12.px-4.lg:px-8.sm:px-6
       .max-w-md.w-96.space-y-8.mt-12
         = yield
-    = render 'layouts/flash_notifications'
+      #flash.flash
+        = render 'layouts/flash_notifications'

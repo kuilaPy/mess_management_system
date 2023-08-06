@@ -22,4 +22,10 @@ Rails.application.routes.draw do
       root 'devise/sessions#new', as: :unauthenticated_root
     end
   end
+  resources :transactions
+  resources :students
+  resources :mess_managers
+  resources :fund_managers
+  resources :general_secretarys
+  resources :assistant_general_secretarys
 end

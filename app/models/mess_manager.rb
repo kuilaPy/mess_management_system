@@ -1,5 +1,9 @@
 class MessManager < ApplicationRecord
-  belongs_to :student, class_name: "student", foreign_key: "student_id"
-  has_many :transactions, class_name: "transaction", foreign_key: "reference_id"
-  has_many :guest_meals, class_name: "guest_meal", foreign_key: "reference_id"
+  belongs_to :student
+  has_many :transactions
+  has_many :guest_meals
+
+
+
+  scope :active, -> {find_by_is_active( true)}
 end
