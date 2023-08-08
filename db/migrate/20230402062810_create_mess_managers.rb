@@ -7,7 +7,7 @@ class CreateMessManagers < ActiveRecord::Migration[7.0]
       t.boolean :is_active
       t.decimal :total_marketing_expenses, precision: 10, scale: 2
       t.decimal :total_grocery_expenses, precision: 10, scale: 2
-      t.decimal :total_grocery_expenses, precision: 10, scale: 2
+      t.decimal :total_miscellaneous_expenses, precision: 10, scale: 2
       t.decimal :total_collection_of_guest_meal, precision: 10, scale: 2
       t.decimal :grant_total_of_expenses, precision: 10, scale: 2
       t.decimal :per_head_expenses, precision: 10, scale: 2
