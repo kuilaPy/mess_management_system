@@ -1,2 +1,2 @@
-module TransactionsHelper
+module TxnsHelper
 end

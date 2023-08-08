@@ -1,18 +1,18 @@
--if params[:txn_type].map(&:to_i) == [Transaction::TXN_TYPE.key("Daily Marketing Payment -D.M.W"),Transaction::TXN_TYPE.key("Daily Marketing Return +C.M.W")]
+-if params[:txn_type].map(&:to_i) == [Txn::TXN_TYPE.key("Daily Marketing Payment -D.M.W"),Txn::TXN_TYPE.key("Daily Marketing Return +C.M.W")]
   %nav.bg-gray-50.dark:bg-gray-700
     .max-w-screen-xl.px-4.py-3.mx-auto
       .flex.items-center
         %ul.flex.flex-row.font-medium.mt-0.mr-6.space-x-8.text-sm
           %li
             .text-gray-900.dark:text-white.hover:underline
-              = active_link_to transactions_path, active: [['transaction'], ['index']], class: 'flex block py-4 px-auto items-center align-middle no-underline hover:text-orange-500 justify-center' do
+              = active_link_to txns_path, active: [['txn'], ['index']], class: 'flex block py-4 px-auto items-center align-middle no-underline hover:text-orange-500 justify-center' do
                 merketing
           %li
             %a.text-gray-900.dark:text-white.hover:underline{:href => "#"} Grocery
 
 .flex
   .right
-    = link_to 'Add Marketing', new_transaction_path, class:"px-5 py-2.5 text-sm font-medium text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    = link_to 'Add Marketing', new_txn_path, class:"px-5 py-2.5 text-sm font-medium text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
     = @current_mess_manager.wallet_balance
 .relative.overflow-x-auto.shadow-md.sm:rounded-lg
   %table.w-full.text-sm.text-left.text-gray-500.dark:text-gray-400
@@ -39,26 +39,26 @@
         %th.px-6.py-3{:scope => "col"}
           Net balance
     %tbody
-      -@transactions.each do |transaction|
+      -@txns.each do |txn|
         %tr.bg-white.border-b.dark:bg-gray-900.dark:border-gray-700
           %td.px-6.py-4
-            = transaction.created_at.strftime("%A")
+            = txn.created_at.strftime("%A")
           %td.px-6.py-4
-            = transaction.created_at.strftime("%d/%m/%Y")
+            = txn.created_at.strftime("%d/%m/%Y")
           %td.px-6.py-4
-            = transaction.student.name
+            = txn.student.name
           %td.px-6.py-4
-            = transaction.amount   
+            = txn.amount   
           %td.px-6.py-4
-            = transaction.comment
+            = txn.comment
           %td.px-6.py-4
-            = transaction.mess_manager.student.name if transaction.mess_manager.present?
-            = transaction.fund_manager.student.name if transaction.fund_manager.present?
+            = txn.mess_manager.student.name if txn.mess_manager.present?
+            = txn.fund_manager.student.name if txn.fund_manager.present?
           -# %td.px-6.py-4
-          -#   = transaction.fund_manager.student.name  
+          -#   = txn.fund_manager.student.name  
           %td.px-6.py-4
-            =  Transaction::TXN_TYPE[transaction.txn_type]  
+            =  Txn::TXN_TYPE[txn.txn_type]  
           %td.px-6.py-4 
-            = Transaction::WALLET_TYPE[transaction.wallet_type] 
+            = Txn::WALLET_TYPE[txn.wallet_type] 
           %td.px-6.py-4 
-            = transaction.net_amount
+            = txn.net_amount

@@ -1,6 +1,6 @@
-class CreateTransactions < ActiveRecord::Migration[7.0]
+class CreateTxns < ActiveRecord::Migration[7.0]
   def change
-    create_table :transactions do |t|
+    create_table :txns do |t|
       t.belongs_to :student, foreign_key: true
       t.belongs_to :mess_manager, foreign_key: true
       # t.belongs_to :fund_manager, foreign_key: true

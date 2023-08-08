@@ -1,4 +1,4 @@
-class Transaction < ApplicationRecord
+class Txn < ApplicationRecord
   belongs_to :mess_manager,optional: true
   belongs_to :fund_manager, optional: true
   belongs_to :student

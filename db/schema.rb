@@ -67,7 +67,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_25_165014) do
     t.index ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true
   end
 
-  create_table "transactions", force: :cascade do |t|
+  create_table "txns", force: :cascade do |t|
     t.bigint "student_id"
     t.bigint "mess_manager_id"
     t.string "amount"
@@ -77,12 +77,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_25_165014) do
     t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["mess_manager_id"], name: "index_transactions_on_mess_manager_id"
-    t.index ["student_id"], name: "index_transactions_on_student_id"
+    t.index ["mess_manager_id"], name: "index_txns_on_mess_manager_id"
+    t.index ["student_id"], name: "index_txns_on_student_id"
   end
 
   add_foreign_key "guest_meals", "mess_managers"
   add_foreign_key "mess_managers", "students"
-  add_foreign_key "transactions", "mess_managers"
-  add_foreign_key "transactions", "students"
+  add_foreign_key "txns", "mess_managers"
+  add_foreign_key "txns", "students"
 end
