@@ -2,6 +2,9 @@ class TransactionsController < ApplicationController
   before_action :set_defaut_date
   def index
     @transactions = Transaction.all
+    @transactions = Transaction.where.not(txn_type: [Transaction::TXN_TYPE.key("Fund Wallet Credit +C.F.W"),Transaction::TXN_TYPE.key("Fund wallet Debit -D.F.W")])
+    @transactions = Transaction.where(txn_type: params[:txn_type]) if params[:txn_type].present?
+
   end
   
   def new
@@ -49,7 +52,7 @@ class TransactionsController < ApplicationController
   private
   def set_defaut_date
     @current_mess_manager = MessManager.active
-    # @current_mess_manager = FundManager.active
+    # @current_fund_manager = FundManager.active
   end
   
   def transaction_params

@@ -1,0 +1,58 @@
+.flex
+  .right
+    = link_to 'Add student', new_student_path, class:"px-5 py-2.5 text-sm font-medium text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    -# = @current_mess_manager.wallet_balance
+.relative.overflow-x-auto.shadow-md.sm:rounded-lg
+  %table.w-full.text-sm.text-left.text-gray-500.dark:text-gray-400
+    %thead.text-xs.text-gray-700.uppercase.bg-gray-50.dark:bg-gray-700.dark:text-gray-400
+      %tr
+        %th.px-6.py-3{:scope => "col"}
+          Name
+        %th.px-6.py-3{:scope => "col"}
+          Email
+        %th.px-6.py-3{:scope => "col"}
+          password
+        %th.px-6.py-3{:scope => "col"}
+          Date of Birth   
+        %th.px-6.py-3{:scope => "col"}
+          Phone No  
+        %th.px-6.py-3{:scope => "col"}
+          Address
+        %th.px-6.py-3{:scope => "col"}
+          Department
+        %th.px-6.py-3{:scope => "col"}
+          Admission Year
+        %th.px-6.py-3{:scope => "col"}
+          Pass out year
+        %th.px-6.py-3{:scope => "col"}
+          Job Which company
+        -# %th.px-6.py-3{:scope => "col"}
+        -#   sign in count
+        %th.px-6.py-3{:scope => "col"}
+          Role 
+    %tbody
+      -@students.each do |student|
+        %tr.bg-white.border-b.dark:bg-gray-900.dark:border-gray-700
+          %td.px-6.py-4
+            = student.name
+          %td.px-6.py-4
+            = student.email
+          %td.px-6.py-4
+            = student.password
+          %td.px-6.py-4
+            = student.date_of_birth   
+          %td.px-6.py-4
+            = student.phone_no
+          %td.px-6.py-4
+            = student.address
+          %td.px-6.py-4
+            = student.department  
+          %td.px-6.py-4
+            =  student.admission_year
+          %td.px-6.py-4 
+            = student.passout_year 
+          %td.px-6.py-4 
+            = student.job_which_company
+          %td.px-6.py-4 
+            = student.role_id
+            

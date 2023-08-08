@@ -1,0 +1,59 @@
+= form_for @student do |f|
+  - if @student.errors.any?
+    .p-4.mb-4.text-sm.text-blue-800.rounded-lg.bg-blue-50.dark:bg-gray-800.dark:text-blue-400{:role => "alert"}
+      %h6= "#{pluralize(@student.errors.count, "error")} prohibited this page from being saved:"
+      %ul
+        - @student.errors.full_messages.each do |message|
+          %li= message
+  %div         
+    = f.label :email,  class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+    = f.text_field  :email
+  %div 
+    = f.label :password, class: "dark:text-white "
+    = f.text_field :password
+    -# = hidden_field :assign_by, value: current_student.id
+    -# = hidden_field :is_active, value: true
+  %div 
+    = f.label :date_of_birth ,class: "dark:text-white "
+    = f.date_field :date_of_birth
+  %div 
+    = f.label :phone_no, class: "dark:text-white "
+    = f.text_field :phone_no
+  -# %div 
+  -#   = f.label :total_grocery_expenses,class: "dark:text-white "
+  -#   = f.text_field :total_grocery_expenses
+  %div 
+    = f.label :address,class: "dark:text-white "
+    = f.text_field :address
+  %div 
+    = f.label :department , class: "dark:text-white "
+    = f.text_field :department
+
+  %div 
+    = f.label :admission_year ,class: "dark:text-white "
+    = f.date_field :admission_year
+  %div 
+    = f.label :passout_year ,class: "dark:text-white "
+    = f.date_field :passout_year
+  %div 
+    = f.label :job_which_company ,class: "dark:text-white "
+    = f.text_field :job_which_company
+  %div 
+    = f.label :reset_password_token ,class: "dark:text-white "
+    = f.text_field :reset_password_token  
+  %div 
+    = f.label :reset_password_sent_at ,class: "dark:text-white "
+    = f.date_field :reset_password_sent_at  
+  %div 
+    = f.label :remember_created_at ,class: "dark:text-white "
+    = f.date_field :remember_created_at
+  -# %div 
+  -#   = f.label :rememsign_in_countber_created_at ,class: "dark:text-white "
+  -#   = f.text_field :sign_in_count
+  -# %div 
+  -#   = f.label :last_sign_in_at ,class: "dark:text-white "
+  -#   = f.date_field :last_sign_in_at
+
+  %div 
+    =f.submit "Save", class: "btn green waves-effect waves-light"
+  
