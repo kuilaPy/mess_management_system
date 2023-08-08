@@ -1,0 +1,58 @@
+.flex
+  .right
+    = link_to 'Add Mess Manager', new_mess_manager_path, class:"px-5 py-2.5 text-sm font-medium text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    -# = @current_mess_manager.wallet_balance
+.relative.overflow-x-auto.shadow-md.sm:rounded-lg
+  %table.w-full.text-sm.text-left.text-gray-500.dark:text-gray-400
+    %thead.text-xs.text-gray-700.uppercase.bg-gray-50.dark:bg-gray-700.dark:text-gray-400
+      %tr
+        %th.px-6.py-3{:scope => "col"}
+          Name
+        %th.px-6.py-3{:scope => "col"}
+          Month
+        %th.px-6.py-3{:scope => "col"}
+          Marketing Expenses
+        %th.px-6.py-3{:scope => "col"}
+          Grocery Expenses   
+        %th.px-6.py-3{:scope => "col"}
+          Mislenious  
+        -# %th.px-6.py-3{:scope => "col"}
+        -#   Manager Expenses
+        %th.px-6.py-3{:scope => "col"}
+          Guest meal collention
+        %th.px-6.py-3{:scope => "col"}
+          Grand total all
+        %th.px-6.py-3{:scope => "col"}
+          Per head
+        %th.px-6.py-3{:scope => "col"}
+          Wallet Balance
+        %th.px-6.py-3{:scope => "col"}
+          Assign_by
+        %th.px-6.py-3{:scope => "col"}
+          Active
+    %tbody
+      -@mess_managers.each do |mess_manager|
+        %tr.bg-white.border-b.dark:bg-gray-900.dark:border-gray-700
+          %td.px-6.py-4
+            = mess_manager.student.name
+          %td.px-6.py-4
+            = mess_manager.for_which_month.try(:strftime,"%m/%Y" )
+          %td.px-6.py-4
+            = mess_manager.total_marketing_expenses
+          %td.px-6.py-4
+            = mess_manager.total_grocery_expenses   
+          %td.px-6.py-4
+            = mess_manager.total_miscellaneous_expenses
+          %td.px-6.py-4
+            = mess_manager.total_collection_of_guest_meal
+          %td.px-6.py-4
+            = mess_manager.grant_total_of_expenses  
+          %td.px-6.py-4
+            =  mess_manager.per_head_expenses
+          %td.px-6.py-4 
+            = mess_manager.wallet_balance 
+          %td.px-6.py-4 
+            = mess_manager.assign_by
+          %td.px-6.py-4 
+            = mess_manager.is_active
+            

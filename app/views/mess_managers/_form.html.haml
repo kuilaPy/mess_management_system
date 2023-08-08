@@ -1,0 +1,44 @@
+= form_for @mess_manager do |f|
+  - if @mess_manager.errors.any?
+    .p-4.mb-4.text-sm.text-blue-800.rounded-lg.bg-blue-50.dark:bg-gray-800.dark:text-blue-400{:role => "alert"}
+      %h6= "#{pluralize(@mess_manager.errors.count, "error")} prohibited this page from being saved:"
+      %ul
+        - @mess_manager.errors.full_messages.each do |message|
+          %li= message
+  %div         
+    = f.label :for_which_month,  class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+    = f.date_field :for_which_month
+  %div 
+    = f.label :student_id, "Assign to",class: "dark:text-white "
+    = f.select :student_id, options_for_select(Student.all.map{|s| [ s.name, s.id ]}, @mess_manager.student_id)
+    = hidden_field :assign_by, value: current_student.id
+    = hidden_field :is_active, value: true
+  %div 
+    = f.label :total_marketing_expenses ,class: "dark:text-white "
+    = f.text_field :total_marketing_expenses
+  %div 
+    = f.label :total_grocery_expenses, class: "dark:text-white "
+    = f.text_field :total_grocery_expenses
+  %div 
+    = f.label :total_grocery_expenses,class: "dark:text-white "
+    = f.text_field :total_grocery_expenses
+  %div 
+    = f.label :total_collection_of_guest_meal,class: "dark:text-white "
+    = f.text_field :total_collection_of_guest_meal
+  %div 
+    = f.label :grant_total_of_expenses , class: "dark:text-white "
+    = f.text_field :grant_total_of_expenses
+
+  %div 
+    = f.label :per_head_expenses ,class: "dark:text-white "
+    = f.text_field :per_head_expenses
+  %div 
+    = f.label :wallet_balance ,class: "dark:text-white "
+    = f.text_field :wallet_balance
+  %div 
+    = f.label :remarks ,class: "dark:text-white "
+    = f.text_field :remarks  
+
+  %div 
+    =f.submit "Save", class: "btn green waves-effect waves-light"
+  
