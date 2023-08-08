@@ -4,7 +4,7 @@ class Student < ApplicationRecord
   devise :database_authenticatable, :registerable,:recoverable, :rememberable, :validatable
   
   has_many :mess_managers
-  has_many :transactions
+  has_many :txns
   has_one :general_secretary 
   has_one :assistant_general_secretary
   has_one :fund_manager  

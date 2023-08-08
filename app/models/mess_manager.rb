@@ -1,6 +1,6 @@
 class MessManager < ApplicationRecord
   belongs_to :student
-  has_many :transactions
+  has_many :txns
   has_many :guest_meals
 
 

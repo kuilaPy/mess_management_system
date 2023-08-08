@@ -75,3 +75,8 @@ gem 'html2haml'
 gem 'devise'
 gem "tailwindcss-rails", "~> 2.0"
 gem 'active_link_to'
+
+
+
+  # x86_64-darwin-20
+
