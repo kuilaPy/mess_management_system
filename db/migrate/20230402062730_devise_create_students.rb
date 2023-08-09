@@ -10,13 +10,13 @@ class DeviseCreateStudents < ActiveRecord::Migration[7.0]
       #database
       t.string :name
       t.date :date_of_birth
-      t.bigint :phone_no ,null: false
+      t.bigint :phone_no 
       t.text :address
-      t.integer :department ,null: false
+      t.integer :department 
       t.date :admission_year
       t.date :passout_year
       t.text :job_which_company
-      t.boolean :is_current_borders , null: false
+      t.boolean :is_current_borders
       t.boolean :is_admin , default: false
       
       ## Recoverable
