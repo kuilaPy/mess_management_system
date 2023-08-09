@@ -59,5 +59,4 @@ class TxnsController < ApplicationController
     params.require(:txn).permit(:date, :student_id, :amount, :comment,:txn_type,:wallet_type,:mess_manager_id,:fund_manager_id,:net_amount)
   end
 
-  
 end
