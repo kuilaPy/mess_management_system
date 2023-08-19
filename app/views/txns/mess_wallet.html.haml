@@ -1,0 +1,54 @@
+
+
+.flex
+  .right
+    = link_to 'Add Marketing', new_txn_path, class:"px-5 py-2.5 text-sm font-medium text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    = @current_mess_manager.wallet_balance
+.relative.overflow-x-auto.shadow-md.sm:rounded-lg
+  %table.w-full.text-sm.text-left.text-gray-500.dark:text-gray-400
+    %thead.text-xs.text-gray-700.uppercase.bg-gray-50.dark:bg-gray-700.dark:text-gray-400
+      %tr
+        %th.px-6.py-3{:scope => "col"}
+          Day
+        %th.px-6.py-3{:scope => "col"}
+          Date
+        %th.px-6.py-3{:scope => "col"}
+          Student
+        %th.px-6.py-3{:scope => "col"}
+          Amount   
+        %th.px-6.py-3{:scope => "col"}
+          Reason 
+        %th.px-6.py-3{:scope => "col"}
+          Manager
+        -# %th.px-6.py-3{:scope => "col"}
+          Fund menager
+        %th.px-6.py-3{:scope => "col"}
+          Txn type
+        %th.px-6.py-3{:scope => "col"}
+          Wallet Type
+        %th.px-6.py-3{:scope => "col"}
+          Net balance
+    %tbody
+      -@txns.each do |txn|
+        %tr.bg-white.border-b.dark:bg-gray-900.dark:border-gray-700
+          %td.px-6.py-4
+            = txn.created_at.strftime("%A")
+          %td.px-6.py-4
+            = txn.created_at.strftime("%d/%m/%Y")
+          %td.px-6.py-4
+            = txn.student.name
+          %td.px-6.py-4
+            = txn.amount   
+          %td.px-6.py-4
+            = txn.comment
+          %td.px-6.py-4
+            = txn.mess_manager.student.name if txn.mess_manager.present?
+            = txn.fund_manager.student.name if txn.fund_manager.present?
+          -# %td.px-6.py-4
+          -#   = txn.fund_manager.student.name  
+          %td.px-6.py-4
+            =  Txn::TXN_TYPE[txn.txn_type]  
+          %td.px-6.py-4 
+            = Txn::WALLET_TYPE[txn.wallet_type] 
+          %td.px-6.py-4 
+            = txn.net_amount
