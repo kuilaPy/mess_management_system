@@ -38,6 +38,8 @@
           Wallet Type
         %th.px-6.py-3{:scope => "col"}
           Net balance
+        %th.px-6.py-3{:scope => "col"}
+          Biling status
     %tbody
       -@txns.each do |txn|
         %tr.bg-white.border-b.dark:bg-gray-900.dark:border-gray-700
@@ -57,8 +59,15 @@
           -# %td.px-6.py-4
           -#   = txn.fund_manager.student.name  
           %td.px-6.py-4
-            =  Txn::TXN_TYPE[txn.txn_type]  
+            = Txn::TXN_TYPE[txn.txn_type]  
           %td.px-6.py-4 
             = Txn::WALLET_TYPE[txn.wallet_type] 
           %td.px-6.py-4 
             = txn.net_amount
+          -if txn.is_bill_required
+            %td.px-6.py-4
+              = txn.aasm_state
+          - else
+            %td.px-6.py-4 Not required
+
+            

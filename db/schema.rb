@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_06_172309) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_19_193324) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -99,13 +99,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_06_172309) do
     t.string "encrypted_password", default: "", null: false
     t.string "name"
     t.date "date_of_birth"
-    t.bigint "phone_no", null: false
+    t.bigint "phone_no"
     t.text "address"
-    t.integer "department", null: false
+    t.integer "department"
     t.date "admission_year"
     t.date "passout_year"
     t.text "job_which_company"
-    t.boolean "is_current_borders", null: false
+    t.boolean "is_current_borders"
     t.boolean "is_admin", default: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -134,6 +134,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_06_172309) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "fund_manager_id"
+    t.string "aasm_state"
+    t.boolean "is_bill_required"
     t.index ["mess_manager_id"], name: "index_txns_on_mess_manager_id"
     t.index ["student_id"], name: "index_txns_on_student_id"
   end
