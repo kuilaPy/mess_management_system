@@ -19,7 +19,7 @@ class Txn < ApplicationRecord
 
   aasm do
     state :pending, initial: true
-    state :submitted, :approved,:cancelled,:resubmitted
+    state :submitted, :approved,:rejected,:resubmitted
 
     event :submit do
       transitions from: :pending, to: :submitted ,after: Proc.new {self.touch(:submitted_at)}
@@ -29,12 +29,12 @@ class Txn < ApplicationRecord
       transitions from: [:submitted,:resubmitted], to: :approved
     end
 
-    event :cancel do
+    event :reject do
       transitions from: [:submitted,:resubmitted], to: :cancelled
     end
 
     event :resubmit do
-      transitions from: :cancelled, to: :resubmitted ,after: Proc.new {self.touch(:submitted_at)}
+      transitions from: :rejected, to: :resubmitted ,after: Proc.new {self.touch(:submitted_at)}
     end
   end
 
