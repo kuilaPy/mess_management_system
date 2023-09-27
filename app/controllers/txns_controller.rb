@@ -32,6 +32,11 @@ class TxnsController < ApplicationController
     @txns = Txn.where(txn_type: _txn_type)
   end
   
+
+  def show
+    @txn = Txn.find_by_id(params[:id])
+  end
+  
   def new
     @txn = Txn.new
   end
