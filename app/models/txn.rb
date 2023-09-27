@@ -1,4 +1,6 @@
 class Txn < ApplicationRecord
+  include AASM
+
   belongs_to :mess_manager,optional: true
   belongs_to :fund_manager, optional: true
   belongs_to :student
@@ -11,6 +13,30 @@ class Txn < ApplicationRecord
 
 
   after_create :upadte_net_amount,:update_wallet
+
+
+  
+
+  aasm do
+    state :pending, initial: true
+    state :submitted, :approved,:rejected,:resubmitted
+
+    event :submit do
+      transitions from: :pending, to: :submitted ,after: Proc.new {self.touch(:submitted_at)}
+    end
+
+    event :approve do
+      transitions from: [:submitted,:resubmitted], to: :approved
+    end
+
+    event :reject do
+      transitions from: [:submitted,:resubmitted], to: :cancelled
+    end
+
+    event :resubmit do
+      transitions from: :rejected, to: :resubmitted ,after: Proc.new {self.touch(:submitted_at)}
+    end
+  end
 
 
   def upadte_net_amount
