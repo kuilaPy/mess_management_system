@@ -83,7 +83,7 @@ test:
 #
 production:
   <<: *default
-  database: pgsql_kg7l
+  database: gcect_hostel_db
   username: avijit
   password: <%= ENV["MESS_MANAGEMENT_SYSTEM_DATABASE_PASSWORD"] %>
   url: <%= ENV["MY_APP_DATABASE_URL"] %>

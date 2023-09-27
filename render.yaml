@@ -1,18 +1,18 @@
 databases:
-  - name: mysite
-    databaseName: mysite
-    user: mysite
+  - name: hostel_db
+    databaseName: gcect_hostel_db
+    user: avijit
 
 services:
   - type: web
-    name: mysite
+    name: gcect_hostel
     runtime: ruby
     buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec puma -C config/puma.rb"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: mysite
+          name: hostel_db
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
