@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     end
 
     unauthenticated do
-      root 'devise/sessions#new', as: :unauthenticated_root
+      root 'devise/sessions#new', as:  :unauthenticated_root
     end
   end
   resources :txns do
@@ -33,7 +33,11 @@ Rails.application.routes.draw do
       get :fund_wallet
     end
   end
-  resources :students
+  resources :students do
+    collection do
+      get :pw_change
+    end
+  end
   resources :mess_managers
   resources :fund_managers
   resources :general_secretarys

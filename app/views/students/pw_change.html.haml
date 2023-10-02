@@ -1,0 +1,32 @@
+
+= form_for @student do |f|
+  .log_in_form{:style => "  padding: 10px;"}
+    .log_in Change Your Password
+    = f.label :password  , class:"label"
+    = f.password_field :password
+    = f.label :confirm_password  , class:"label"
+    = f.password_field :confirm_password
+    -# %span{:style => "color:red; font-size: 14px;"}
+    -#   not mathed
+    #error
+    %p
+      = f.submit 'Save' , id: "pw_save"
+  
+:javascript
+  $(document).ready(function() {
+    $('#student_confirm_password').on('blur', function() {
+      var pw = $('#student_password')[0].value 
+      var confirm_pw = $('#student_confirm_password')[0].value
+      if (pw != confirm_pw ){
+        $("#error").html('<span style="color:red; font-size: 14px;"> Confirm password not mathed!</span>');
+        $('#pw_save').prop('disabled', true);
+        $('#pw_save').css('background-color', 'grey');
+      }
+      else{
+        $('#pw_save').prop('disabled', false);
+        $('#pw_save').css('background-color', '#3551f1');
+        $("#error").html('<span style="color:red; font-size: 14px;">Mathed</span>');
+
+      }
+    });  
+  }); 
