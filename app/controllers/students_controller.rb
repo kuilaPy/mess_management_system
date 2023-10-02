@@ -1,4 +1,6 @@
 class StudentsController < ApplicationController
+  layout 'devise', only: [:pw_change]
+
   def index
     @students = Student.all
   end
@@ -15,6 +17,24 @@ class StudentsController < ApplicationController
       render 'new'
     end
   end
+
+  def pw_change
+    @student = current_student
+  end
+  
+
+  def update
+    @student = Student.find_by_id(params[:id])
+    if @student.update(student_params)
+      flash[:success] = "student was successfully updated"
+      redirect_to students_path
+    else
+      flash[:error] = "Something went wrong"
+      render 'pw_change' if params[:confirm_password].present?
+      render 'edit' 
+    end
+  end
+  
 
 
   private

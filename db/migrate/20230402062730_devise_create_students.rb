@@ -28,10 +28,10 @@ class DeviseCreateStudents < ActiveRecord::Migration[7.0]
 
       ## Trackable
       t.integer  :sign_in_count, default: 0, null: false
-      # t.datetime :current_sign_in_at
+      t.datetime :current_sign_in_at
       t.datetime :last_sign_in_at
-      # t.string   :current_sign_in_ip
-      # t.string   :last_sign_in_ip
+      t.string   :current_sign_in_ip
+      t.string   :last_sign_in_ip
 
       ## Confirmable
       # t.string   :confirmation_token
@@ -51,6 +51,6 @@ class DeviseCreateStudents < ActiveRecord::Migration[7.0]
     add_index :students, :email,                unique: true
     add_index :students, :reset_password_token, unique: true
     # add_index :students, :confirmation_token,   unique: true
-    # add_index :students, :unlock_token,         unique: true
+    add_index :students, :unlock_token,         unique: true
   end
 end
